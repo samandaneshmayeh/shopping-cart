@@ -6,7 +6,7 @@ import { ProductsContext } from '../context/ProductContextProvider';
 
 const ProductDetail = (props) => {
 
-    const id = props.match.params.id;
+    const id = props.match.params.id; 
     const data = useContext(ProductsContext);
     const product = data[id - 1];
     const {image, title, description, price, category} = product;
