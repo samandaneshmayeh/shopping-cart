@@ -8,6 +8,7 @@ const initialState = {
 }
 
 const cartReducer = (state, action) => {
+    console.log(state)
     switch(action.type) {
         case "ADD_ITEM":
             if (state.selectedItems.find(item => item.id === action.payload.id)) {
@@ -32,14 +33,14 @@ const cartReducer = (state, action) => {
             const indexI = state.selectedItems.findIndex(item => item.id === action.payload.id);
             state.selectedItems[indexI].quantity++;
             return {
-                ...state,
+                ...state
             }
 
         case "DECREASE":
             const indexD = state.selectedItems.findIndex(item => item.id === action.payload.id);
             state.selectedItems[indexD].quantity--;
             return {
-                ...state,
+                ...state
             }
 
         case "CHECKOUT":
@@ -70,7 +71,7 @@ const CartContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
 
     return (
-        <CartContext.Provider value={{state: state, dispatch: dispatch}}>
+        <CartContext.Provider value={{state, dispatch}}>
             {children}
         </CartContext.Provider>
     );
